@@ -5,14 +5,11 @@ from __functions import poly_df_and_clobIDs
 
 pd.set_option('display.max_columns', None)
 pd.set_option('display.max_colwidth', None)
+pd.set_option('display.max_rows', None)
 
-
-clobbbbb = get_poly_tag_id(['mlb'])
-clobbbbb
-
-rows = fetch_poly_markets(clobbbbb, '2026-07-28T07:00:00Z')
-rows
-
-final = poly_df_and_clobIDs(rows)
-final
+if __name__ == "__main__":
+    tag_id = get_poly_tag_id(['mlb'])
+    rows = fetch_poly_markets(tag_id, '2026-07-29')
+    final_df = poly_df_and_clobIDs(rows)
+    print(final_df)
 
