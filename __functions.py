@@ -1,5 +1,9 @@
+import time
+import base64
 import requests
 import pandas as pd
+from cryptography.hazmat.primitives import hashes, serialization
+from cryptography.hazmat.primitives.asymmetric import padding
 
 
 def get_poly_tag_id(categories):
@@ -61,4 +65,25 @@ def poly_df_and_clobIDs(poly_markets):
     df[['a', 'b']] = df['clobTokenIds'].str.strip('[]').str.replace('"', '').str.split(', ', expand=True)
     df = df[['event_title', 'event_date', 'outcome_a', 'outcome_b', 'a', 'b']]
     return df
+
+
+def kalsh_header_for_wss(key_id):
+    KEY_ID = key_id
+    with open("path/to/your/Kalshi/RSAPrivateKey.pem", "r") as f:
+        PRIVATE_KEY_PEM = f.read()
+    private_key = serialization.load_pem_private_key(PRIVATE_KEY_PEM.encode('utf-8'), password=None)
+    timestamp = str(int(time.time() * 1000))
+    message = timestamp + "GET" + "/trade-api/ws/v2"
+    signature = private_key.sign(
+                    message.encode('utf-8'),
+                    padding.PSS(mgf=padding.MGF1(hashes.SHA256()),
+                    salt_length=padding.PSS.DIGEST_LENGTH),  # FIX: was MAX_LENGTH
+                    hashes.SHA256())
+    sig_b64 = base64.b64encode(signature).decode('utf-8')
+    headers = {
+        "KALSHI-ACCESS-KEY": KEY_ID,
+        "KALSHI-ACCESS-SIGNATURE": sig_b64,
+        "KALSHI-ACCESS-TIMESTAMP": timestamp,
+    }
+    return headers
 
