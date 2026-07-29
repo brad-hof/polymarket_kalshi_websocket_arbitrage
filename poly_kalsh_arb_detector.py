@@ -12,8 +12,8 @@ poly_ws_url = "wss://ws-subscriptions-clob.polymarket.com/ws/market"
 kalsh_ws_url = "wss://external-api-ws.kalshi.com/trade-api/ws/v2"
 port_url = "https://api.elections.kalshi.com/trade-api/v2/portfolio/orders"
 
-poly_clob_token_id = "6852667973886724590910521015094796531541524268962926123463824579891345270383"
-kalsh_market_ticker = "KXMLBGAME-26JUL291545MILSF-MIL"
+poly_clob_token_id = "copy_and_paste_here"
+kalsh_market_ticker = "copy_and_paste_here"
 
 poly_price = None
 kalshi_ask = None
