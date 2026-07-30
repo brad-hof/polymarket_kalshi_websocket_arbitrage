@@ -6,7 +6,10 @@ from cryptography.hazmat.primitives import hashes, serialization
 from cryptography.hazmat.primitives.asymmetric import padding
 
 
-def get_poly_tag_id(categories):
+def get_poly_tag_id(categories: list[str]) -> list[str]:
+    """
+    Look up the Polymarket tag id for each category slug.
+    """
     base_url = "https://gamma-api.polymarket.com"
     tag_id = []
     for cat in categories:
@@ -19,9 +22,9 @@ def get_poly_tag_id(categories):
     return tag_id
 
 
-def fetch_poly_markets(tag_id, target_date):
+def fetch_poly_markets(tag_id: list[str], target_date: str) -> list[dict[str]]:
     """
-    target_date: plain 'YYYY-MM-DD' string for the game date you want (e.g. '2026-07-29')
+    Fetch markets for the given tags, filtered to one game date ('YYYY-MM-DD').
     """
     base_url = "https://gamma-api.polymarket.com"
     limit = 100
@@ -56,7 +59,10 @@ def fetch_poly_markets(tag_id, target_date):
     return rows
 
 
-def poly_df_and_clobIDs(poly_markets):
+def poly_df_and_clobIDs(poly_markets: list[dict[str]]) -> pd.DataFrame:
+    """
+    Build a dataframe of moneyline markets with outcome names and CLOB token ids.
+    """
     df = pd.DataFrame(poly_markets)
     df = df[df['closed'] != True]
     df = df[df['active'] != False]
