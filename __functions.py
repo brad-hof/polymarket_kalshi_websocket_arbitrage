@@ -75,7 +75,7 @@ def poly_df_and_clobIDs(poly_markets: list[dict[str]]) -> pd.DataFrame:
 
 def kalsh_header_for_wss(key_id):
     KEY_ID = key_id
-    with open("path/to/your/Kalshi/RSAPrivateKey.pem", "r") as f:
+    with open("your_kalshi_RSA_private_key.pem", "r") as f:
         PRIVATE_KEY_PEM = f.read()
     private_key = serialization.load_pem_private_key(PRIVATE_KEY_PEM.encode('utf-8'), password=None)
     timestamp = str(int(time.time() * 1000))
