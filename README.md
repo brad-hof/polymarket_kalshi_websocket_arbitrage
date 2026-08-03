@@ -9,5 +9,5 @@ Steps:
 2. Update line 15 in the `poly_kalsh_arb_detector.py` script with the CLOB token you just got.
 3. Go to the Kalshi website and find the market ticker for the same market but on the other side (Lakers vs Celtics - Celtics).
 4. Update line 16 in the `poly_kalsh_arb_detector.py` script with the market ticker you just found.
-5. Update line 8 in the `poly_kalsh_arb_detector.py` script with your kalshi key ID and update the `your_kalshi_RSA_private_key.pem' file with your info.
+5. Update line 8 in the `poly_kalsh_arb_detector.py` script with your kalshi key ID and update the `your_kalshi_RSA_private_key.pem` file with your info.
 6. Run the `poly_kalsh_arb_detector.py` script in your terminal and watch as it compares live orders between the two websites & finds live price differences.
