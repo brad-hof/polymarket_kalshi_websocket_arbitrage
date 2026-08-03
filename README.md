@@ -11,3 +11,8 @@ Steps:
 4. Update line 16 in the `poly_kalsh_arb_detector.py` script with the market ticker you just found.
 5. Update line 8 in the `poly_kalsh_arb_detector.py` script with your kalshi key ID and update the `your_kalshi_RSA_private_key.pem` file with your info.
 6. Run the `poly_kalsh_arb_detector.py` script in your terminal and watch as it compares live orders between the two websites & finds live price differences.
+
+
+
+https://github.com/user-attachments/assets/41e3b361-7ceb-4de2-b639-92ba1272e2b4
+
