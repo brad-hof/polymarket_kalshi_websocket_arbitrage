@@ -1,5 +1,5 @@
 # Prediction Market Arbitrage Detector (Polymarket - Kalshi)
-Find arbitrage opportunities using Kalshi and Polymarket websocket API's.
+Find price arbitrage using the Kalshi and Polymarket websocket API's.
 
 You will need: Kalshi account & private key
 
